@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/index.js is processed and
+// This example support/e2e.ts is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -14,7 +14,20 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands";
+import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(function () {
+    let testSuite: string = Cypress.env('suite');
+    if (!testSuite) {
+      return;
+    }
+  
+    const testName: string = this.currentTest?.title as any;
+    testSuite = '[' + testSuite + ']';
+    if (!testName.includes(testSuite)) {
+      this.skip();
+    }
+  });
