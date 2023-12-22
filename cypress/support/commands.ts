@@ -13,6 +13,15 @@ declare namespace Cypress {
   interface Chainable<Subject = any> {
     hover(): Cypress.Chainable<JQuery<HTMLElement>>;
     shouldExist(options?: { reverse: boolean }): Cypress.Chainable<JQuery<HTMLElement>>;
+
+    /**
+     * Assert that one or more elements are visible.
+     *
+     * @param {Object} options - The options for the visibility check.
+     * @returns {Object} Returns a Cypress chainable object.
+     * @example cy.get('button').shouldBeDisplayed();
+     * @example cy.get('ul li').shouldBeDisplayed({ reverse: true }
+     */
     shouldBeDisplayed(options?: { reverse: boolean }): Cypress.Chainable<JQuery<HTMLElement>>;
     shouldBeEnabled(options?: { reverse: boolean }): Cypress.Chainable<JQuery<HTMLElement>>;
 
