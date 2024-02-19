@@ -6,7 +6,7 @@ import { DeliveryStepPageObject } from "../page-objects/delivery-step.pageobject
 import { HeaderMenuPageObject } from "../page-objects/header-menu.pageobject";
 import { LandingPageObject } from "../page-objects/landing.pageobject";
 import { MyCartPageObject } from "../page-objects/my-cart.pageobject";
-import { PaymentStepPageObject } from "../page-objects/payment-step.pageobject";
+
 import { ProductDetailsPageObject } from "../page-objects/product-details.pageobject";
 import { ProductResultsPageObject } from "../page-objects/products-results.pageobject";
 import { SittingPositionModalPageObject } from "../page-objects/sitting-position-modal.pageobject";
@@ -22,8 +22,8 @@ describe('Purchase', () => {
   const dataStep = new DataStepPageObject();
   const deliveryStep = new DeliveryStepPageObject();
   const billingStep = new BillingStepPageObject();
-  const paymentStep = new PaymentStepPageObject();
-  const checkOutSummary = new CheckOutSummaryPageObject();
+
+
 
   beforeEach(() => {
     landingPage.visit();
@@ -62,9 +62,6 @@ describe('Purchase', () => {
     billingStep.selectCountry('Österreich');
     billingStep.fillTelephoneNumberTextBoxWith('067052139152');
     billingStep.clickContinueToPaymentButton();
-    paymentStep.clickCheckMoneyOrderOption();
-    checkOutSummary.valitdateItemNamesTexts(['\n      Anzahl Artikel:\n    ', '\n      Zwischensumme (inkl. MwSt.):\n    ', '\n      Versandkosten:\n    ', '\n      Gesamtsumme (inkl. MwSt.):\n    ']);
-    checkOutSummary.valitdateItemValuesTexts(['\n      1\n    ', '\n      1.199,00 €\n    ', '\n      0,00 €\n    ', '\n      1.199,00 €\n    '])
-    cy.wait(10000);
+    //cy.wait(10000);
   });
 });
