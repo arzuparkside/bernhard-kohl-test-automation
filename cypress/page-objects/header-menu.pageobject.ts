@@ -1,19 +1,22 @@
 import { BasePageObject } from "./base.pageobject";
 
 export class HeaderMenuPageObject extends BasePageObject {
-  private getOptions = () => cy.get('.overlay-page-header .parkside-header-menu .top-level-nav-header-item > a');
+    private getMenuItems = () => cy.get('.bk-header__wrapper .bk-header-item');
+    private getFlyoutMenuLinks = () => cy.get('.bk-flyout-menu--open .bk-flyout-menu__links');
+    private getCartIcon = () => cy.get('[label=Warenkorb]');
 
-  constructor() {
-    super();
-  }
+    public clickMenuItem(menuItem: string): this {
+        this.getMenuItems().contains(menuItem).click();
+        return this;
+    }
 
-  public validateHrefValueOfOption(option: string, expectedValue: string): this {
-    this.getOptions().contains(option).shouldHaveAttributeValue('href', expectedValue);
-    return this;
-  }
+    public clickFlyoutMenuLink(flyoutMenuLink: string): this {
+        this.getFlyoutMenuLinks().contains(flyoutMenuLink).click();
+        return this;
+    }
 
-  public validateTextsOptions(expected: string []): this {
-    this.getOptions().shouldHaveText(expected);
-    return this;
-  }
+    public clickCartIcon(): this {
+        this.getCartIcon().click();
+        return this;
+    }
 }
