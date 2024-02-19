@@ -1,3 +1,4 @@
+
 import { CheckOutSummaryPageObject } from "../page-objects/check-out-summary.pageobject";
 import { CookieControlModalPageObject } from "../page-objects/cookie-control-modal.pageobject";
 import { DataStepPageObject } from "../page-objects/data-step.pageobject";
@@ -20,6 +21,7 @@ describe('Purchase', () => {
   const myCart = new MyCartPageObject();
   const dataStep = new DataStepPageObject();
   const deliveryStep = new DeliveryStepPageObject();
+  
   const paymentStep = new PaymentStepPageObject();
   const checkOutSummary = new CheckOutSummaryPageObject();
 
