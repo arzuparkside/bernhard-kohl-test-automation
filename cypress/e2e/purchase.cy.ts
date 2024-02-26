@@ -6,6 +6,7 @@ import { DeliveryStepPageObject } from "../page-objects/delivery-step.pageobject
 import { HeaderMenuPageObject } from "../page-objects/header-menu.pageobject";
 import { LandingPageObject } from "../page-objects/landing.pageobject";
 import { MyCartPageObject } from "../page-objects/my-cart.pageobject";
+import { PaymentStepsPageObject } from "../page-objects/payment-steps.pageobject";
 
 import { ProductDetailsPageObject } from "../page-objects/product-details.pageobject";
 import { ProductResultsPageObject } from "../page-objects/products-results.pageobject";
@@ -22,6 +23,8 @@ describe('Purchase', () => {
   const dataStep = new DataStepPageObject();
   const deliveryStep = new DeliveryStepPageObject();
   const billingStep = new BillingStepPageObject();
+  const paymentStep = new PaymentStepsPageObject();
+  const checkoutSummary = new CheckOutSummaryPageObject()
 
 
 
@@ -63,5 +66,8 @@ describe('Purchase', () => {
     billingStep.fillTelephoneNumberTextBoxWith('067052139152');
     billingStep.clickContinueToPaymentButton();
     //cy.wait(10000);
+    paymentStep.clickCheckMoneyOrder();
+    checkoutSummary.checkOutNames();
+    checkoutSummary.checkOutValues();
   });
 });
