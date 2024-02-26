@@ -10,6 +10,7 @@ import { PaymentStepPageObject } from "../page-objects/payment-step.pageobject";
 import { ProductDetailsPageObject } from "../page-objects/product-details.pageobject";
 import { ProductResultsPageObject } from "../page-objects/products-results.pageobject";
 import { SittingPositionModalPageObject } from "../page-objects/sitting-position-modal.pageobject";
+import { DeliveryStepPageObject } from "../page-objects/delivery-step.pageobject";
 
 describe('Purchase', () => {
   const cookieControlModal = new CookieControlModalPageObject();
@@ -20,7 +21,7 @@ describe('Purchase', () => {
   const sittingPositionModal = new SittingPositionModalPageObject();
   const myCart = new MyCartPageObject();
   const dataStep = new DataStepPageObject();
-
+  const deliveryStep = new DeliveryStepPageObject();
   const billingStep = new BillingStepPageObject();
   const paymentStep = new PaymentStepPageObject();
   const checkOutSummary = new CheckOutSummaryPageObject();
@@ -42,7 +43,18 @@ describe('Purchase', () => {
     dataStep.fillLastNameTextBoxWith('Doe');
     dataStep.fillEmailTextBoxWith('john.doea@parkside-interactive.com');
     dataStep.clickContinueToDeliveryButton();
-    /*billingStep.fillFirstNameTextBoxWith('John');
+    deliveryStep.fillFirstNameTextBoxWith('Nikola');
+    deliveryStep.fillLastNameTextBoxWith('Ristic');
+    deliveryStep.fillCompanyTextBoxWith('Parkside');
+    deliveryStep.fillStreetAndHouseTextBoxWith('Marienplatz 1');
+    deliveryStep.fillPostalCodeTextBoxWith('8010');
+    deliveryStep.fillCityTextBoxWith('Graz');
+    deliveryStep.selectCountry('Österreich');
+    deliveryStep.fillTelephoneNumberTextBoxWith('12345678');
+    deliveryStep.clickContinueToDeliveryButton();
+    deliveryStep.chooseShippingOptionRadioButton();
+    deliveryStep.clickContinueToBillingButton();
+    billingStep.fillFirstNameTextBoxWith('John');
     billingStep.fillLastNameTextBoxWith('Doe');
     billingStep.fillCompanyTextBoxWith('Parkside Interactive');
     billingStep.fillStreetAndHouseNumberTextBoxWith('Marienplatz 1');
@@ -54,6 +66,6 @@ describe('Purchase', () => {
     paymentStep.clickCheckMoneyOrderOption();
     checkOutSummary.valitdateItemNamesTexts(['\n      Anzahl Artikel:\n    ', '\n      Zwischensumme (inkl. MwSt.):\n    ', '\n      Versandkosten:\n    ', '\n      Gesamtsumme (inkl. MwSt.):\n    ']);
     checkOutSummary.valitdateItemValuesTexts(['\n      1\n    ', '\n      1.199,00 €\n    ', '\n      0,00 €\n    ', '\n      1.199,00 €\n    '])
-    cy.wait(10000);*/
+    cy.wait(10000);
   });
 });
