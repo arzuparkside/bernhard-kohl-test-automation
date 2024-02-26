@@ -1,5 +1,5 @@
 import { BillingStepPageObject } from "../page-objects/billing-step.pageobject";
-import { CheckOutSummaryPageObject } from "../page-objects/check-out-summary.pageobject";
+import { CheckoutSummaryPageObject } from "../page-objects/checkout-summary.pageobject";
 import { CookieControlModalPageObject } from "../page-objects/cookie-control-modal.pageobject";
 import { DataStepPageObject } from "../page-objects/data-step.pageobject";
 import { DeliveryStepPageObject } from "../page-objects/delivery-step.pageobject";
@@ -24,7 +24,7 @@ describe('Purchase', () => {
   const deliveryStep = new DeliveryStepPageObject();
   const billingStep = new BillingStepPageObject();
   const paymentStep = new PaymentStepsPageObject();
-  const checkoutSummary = new CheckOutSummaryPageObject()
+  const checkoutSummary = new CheckoutSummaryPageObject()
 
 
 
@@ -67,7 +67,7 @@ describe('Purchase', () => {
     billingStep.clickContinueToPaymentButton();
     //cy.wait(10000);
     paymentStep.clickCheckMoneyOrder();
-    checkoutSummary.checkOutNames();
-    checkoutSummary.checkOutValues();
+    checkoutSummary.checkOutNames(['\n      Anzahl Artikel:\n    ', '\n      Zwischensumme (inkl. MwSt.):\n    ', '\n      Versandkosten:\n    ', '\n      Gesamtsumme (inkl. MwSt.):\n    ']);
+    checkoutSummary.checkOutValues(['\n      1\n    ', '\n      1.199,00 €\n    ', '\n      0,00 €\n    ', '\n      1.199,00 €\n    ']);
   });
 });
