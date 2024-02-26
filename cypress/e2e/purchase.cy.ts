@@ -1,7 +1,7 @@
 import { BillingStepPageObject } from "../page-objects/billing-step.pageobject";
 import { CheckOutSummaryPageObject } from "../page-objects/check-out-summary.pageobject";
 import { CookieControlModalPageObject } from "../page-objects/cookie-control-modal.pageobject";
-
+import { DataStepPageObject } from "../page-objects/data-step.pageobject";
 import { DeliveryStepPageObject } from "../page-objects/delivery-step.pageobject";
 import { HeaderMenuPageObject } from "../page-objects/header-menu.pageobject";
 import { LandingPageObject } from "../page-objects/landing.pageobject";
@@ -19,7 +19,7 @@ describe('Purchase', () => {
   const productDetailsPage = new ProductDetailsPageObject();
   const sittingPositionModal = new SittingPositionModalPageObject();
   const myCart = new MyCartPageObject();
-
+  const dataStep = new DataStepPageObject();
   const deliveryStep = new DeliveryStepPageObject();
   const billingStep = new BillingStepPageObject();
   const paymentStep = new PaymentStepPageObject();
@@ -38,6 +38,10 @@ describe('Purchase', () => {
     sittingPositionModal.clickContinueWithoutSittingPositionButton();
     headerMenu.clickCartIcon();
     myCart.clickGoToCheckoutButton();
+    dataStep.fillFirstNameTextbox('Firstname');
+    dataStep.fillLastNameTextbox('Lastname');
+    dataStep.fillEmailTextbox('test@parkside-interactive.com');
+    dataStep.clickContinueToNextStepButton();
     /*deliveryStep.fillFirstNameTextBoxWith('John');
     deliveryStep.fillLastNameTextBoxWith('Doe');
     deliveryStep.fillCompanyTextBoxWith('Parkside Interactive');
