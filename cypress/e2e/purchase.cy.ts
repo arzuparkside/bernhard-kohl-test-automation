@@ -1,4 +1,5 @@
 
+import { BillingStepPageObject } from "../page-objects/billing-step.pageobject";
 import { CheckOutSummaryPageObject } from "../page-objects/check-out-summary.pageobject";
 import { CookieControlModalPageObject } from "../page-objects/cookie-control-modal.pageobject";
 import { DataStepPageObject } from "../page-objects/data-step.pageobject";
@@ -21,7 +22,7 @@ describe('Purchase', () => {
   const myCart = new MyCartPageObject();
   const dataStep = new DataStepPageObject();
   const deliveryStep = new DeliveryStepPageObject();
-  
+  const billingStep = new BillingStepPageObject();
   const paymentStep = new PaymentStepPageObject();
   const checkOutSummary = new CheckOutSummaryPageObject();
 
@@ -53,9 +54,18 @@ describe('Purchase', () => {
     deliveryStep.clickContinueToDeliveryMethodButton();
     deliveryStep.clickPickUpInStoreLabel();
     deliveryStep.clickContinueToBillingButton();
-    /*paymentStep.clickCheckMoneyOrderOption();
+    billingStep.fillFirstNameTextBoxWith('John');
+    billingStep.fillLastNameTextBoxWith('Doe');
+    billingStep.fillCompanyTextBoxWith('Parkside Interactive');
+    billingStep.fillStreetAndHouseNumberTextBoxWith('Marienplatz 1');
+    billingStep.fillPostalCodeTextBoxWith('8020');
+    billingStep.fillCityTextBoxWith('Graz');
+    billingStep.selectCountry('Österreich');
+    billingStep.fillTelephoneNumberTextBoxWith('067052139152');
+    billingStep.clickContinueToPaymentButton();
+    paymentStep.clickCheckMoneyOrderOption();
     checkOutSummary.valitdateItemNamesTexts(['\n      Anzahl Artikel:\n    ', '\n      Zwischensumme (inkl. MwSt.):\n    ', '\n      Versandkosten:\n    ', '\n      Gesamtsumme (inkl. MwSt.):\n    ']);
     checkOutSummary.valitdateItemValuesTexts(['\n      1\n    ', '\n      1.199,00 €\n    ', '\n      0,00 €\n    ', '\n      1.199,00 €\n    '])
-    cy.wait(10000);*/
+    cy.wait(10000);
   });
 });
